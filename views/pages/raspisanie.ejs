@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <% include ../partials/header.ejs %>
+</head>
+
+<body>
+    <div>
+        <% include ../partials/nav.ejs %>
+        <div>
+            <select>
+                <option>Понедельник</option>
+                <option>Вторник</option>
+                <option>Среда</option>
+                <option>Четверг</option>
+                <option>Пятница</option>
+                <option>Суббота</option>
+                <option>Все дни</option>
+                <input type="button" value="день недели" name="getWeekDay" OnClick="getWeekDay();">
+                <script language="JavaScript">
+                    function getWeekDay(date) {
+                        var now = new Date();
+                        console.log(now);
+                    }
+                </script>
+
+            </select>
+        </div>
+    </div>
+
+</body>
+
+</html>
