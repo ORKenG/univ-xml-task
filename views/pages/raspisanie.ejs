@@ -9,23 +9,25 @@
     <div>
         <% include ../partials/nav.ejs %>
         <div>
-            <select>
-                <option>Понедельник</option>
-                <option>Вторник</option>
-                <option>Среда</option>
-                <option>Четверг</option>
-                <option>Пятница</option>
-                <option>Суббота</option>
-                <option>Все дни</option>
-                <input type="button" value="день недели" name="getWeekDay" OnClick="getWeekDay();">
-                <script language="JavaScript">
-                    function getWeekDay(date) {
-                        var now = new Date();
-                        console.log(now);
-                    }
-                </script>
+            <form>
+                <select>
+                    <option getElemantId="Mon">Понедельник</option>
+                    <option getElemantId="Tue">Вторник</option>
+                    <option getElemantId="Wed">Среда</option>
+                    <option getElemantId="Thr">Четверг</option>
+                    <option getElemantId="Fri">Пятница</option>
+                    <option getElemantId="Sat">Суббота</option>
+                    <option getElemantId="Sun">Все дни</option>
+                    <input type="button" value="день недели" name="getWeekDay" OnClick="getWeekDay();">
+                    <script language="JavaScript">
+                        function getWeekDay(date) {
+                            var now = new Date();
+                            console.log(now);
+                        }
+                    </script>
 
-            </select>
+                </select>
+            </form>
         </div>
     </div>
 
