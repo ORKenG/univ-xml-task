@@ -1,3 +1,7 @@
+function atou(str) {
+    return decodeURIComponent(escape(window.atob(str)));
+}
+
 function utoa(str) {
     return window.btoa(unescape(encodeURIComponent(str)));
 }
@@ -19,21 +23,15 @@ $('#submit').click(function (e) {
     const lectureHall = $('#lectureHall').val();
     const grade = $('#grade').val();
     const teacher = $('#teacher').val();
+    const day = $('#day').val();
     const reqbuf64 = utoa(
-    `<?xml version='1.0' encoding='Windows-1251' ?>\
+    `<?xml version='1.0' encoding='UTF-8' ?>\
         <GetRaspis>\
-            <semestr>\
-                ${semester}\
-            </semestr>\
-            <auditoriy>\
-                ${lectureHall}\
-            </auditoriy>\
-            <raspkurs>\
-                ${grade}\
-            </raspkurs>\
-            <prepodavatel>\
-                ${teacher}\
-            </prepodavatel>\
+            <semestr>${semester}</semestr>\
+            <auditoriy>${lectureHall}</auditoriy>\
+            <raspkurs>${grade}</raspkurs>\
+            <prepodavatel>${teacher}</prepodavatel>\
+            <raspday>${day}</raspday>\
         </GetRaspis>`);
     const soapMessage =
     `<?xml version='1.0' encoding='UTF-8' ?><SOAP-ENV:Envelope xmlns:SOAP-ENC='http://schemas.xmlsoap.org/soap/encoding/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xmm='http://namespace.softwareag.com/entirex/xml/mapping' xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/'>\
@@ -49,6 +47,10 @@ $('#submit').click(function (e) {
         </m:WSDLOSBB>\
     </SOAP-ENV:Body>\
 </SOAP-ENV:Envelope>`;
+
+console.dir(soapMessage);
+console.dir(atou(reqbuf64));
+
     $.ajax({
         url,
         method,
